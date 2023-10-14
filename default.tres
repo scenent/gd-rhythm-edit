@@ -1,0 +1,28 @@
+[gd_resource type="Theme" load_steps=7 format=2]
+
+[ext_resource path="res://roboto.ttf" type="DynamicFontData" id=1]
+
+[sub_resource type="DynamicFont" id=4]
+size = 24
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.686275, 0.686275, 0.686275, 1 )
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.372549, 0.372549, 0.372549, 1 )
+
+[resource]
+Button/fonts/font = SubResource( 4 )
+Button/styles/focus = SubResource( 5 )
+Button/styles/hover = SubResource( 2 )
+Button/styles/normal = SubResource( 1 )
+Button/styles/pressed = SubResource( 3 )

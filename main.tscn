@@ -1,0 +1,183 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://main.gd" type="Script" id=1]
+
+[node name="main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="bg" type="ColorRect" parent="."]
+margin_left = 700.0
+margin_top = 720.0
+margin_right = 1100.0
+margin_bottom = 1440.0
+rect_rotation = 180.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="lines" type="Node2D" parent="."]
+position = Vector2( 0, -180 )
+
+[node name="1" type="Line2D" parent="lines"]
+points = PoolVector2Array( 300, -10000, 300, 900 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="2" type="Line2D" parent="lines"]
+points = PoolVector2Array( 400, -10000, 400, 900 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="3" type="Line2D" parent="lines"]
+points = PoolVector2Array( 500, -10000, 500, 900 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="4" type="Line2D" parent="lines"]
+points = PoolVector2Array( 600, -10000, 600, 900 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="5" type="Line2D" parent="lines"]
+points = PoolVector2Array( 700, -10000, 700, 900 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="6" type="Line2D" parent="lines"]
+points = PoolVector2Array( 700, 900, 300, 900 )
+width = 3.0
+default_color = Color( 1, 1, 1, 1 )
+
+[node name="cam" type="Camera2D" parent="."]
+position = Vector2( 640, 360 )
+current = true
+
+[node name="audio" type="AudioStreamPlayer" parent="."]
+
+[node name="buttons1" type="Node2D" parent="."]
+
+[node name="buttons2" type="Node2D" parent="."]
+
+[node name="buttons3" type="Node2D" parent="."]
+
+[node name="buttons4" type="Node2D" parent="."]
+
+[node name="pointer" type="Line2D" parent="."]
+points = PoolVector2Array( 300, 0, 700, 0 )
+width = 3.0
+
+[node name="layer" type="CanvasLayer" parent="."]
+
+[node name="file_dialog" type="FileDialog" parent="layer"]
+margin_left = 245.0
+margin_top = 193.0
+margin_right = 1091.0
+margin_bottom = 645.0
+window_title = "파일 열기"
+mode = 0
+
+[node name="import" type="Button" parent="layer"]
+margin_left = 1108.0
+margin_top = 11.0
+margin_right = 1271.0
+margin_bottom = 43.0
+text = "import audio"
+
+[node name="export" type="Button" parent="layer"]
+margin_left = 1108.0
+margin_top = 55.0
+margin_right = 1271.0
+margin_bottom = 90.0
+text = "export to clipboard"
+
+[node name="play" type="Button" parent="layer"]
+margin_left = 13.0
+margin_top = 14.0
+margin_right = 227.0
+margin_bottom = 50.0
+text = "play audio from beginning"
+
+[node name="play2" type="Button" parent="layer"]
+margin_left = 13.0
+margin_top = 64.0
+margin_right = 227.0
+margin_bottom = 95.0
+text = "play audio from last position"
+
+[node name="stop" type="Button" parent="layer"]
+margin_left = 14.0
+margin_top = 110.0
+margin_right = 226.0
+margin_bottom = 141.0
+text = "stop audio"
+
+[node name="info" type="Label" parent="layer"]
+margin_left = 834.0
+margin_top = 33.0
+margin_right = 1381.0
+margin_bottom = 205.0
+text = "press WASD / arrow keys to move around
+
+press \"import audio\" to import audio file
+
+press \"export to clipboard\" to print result and copy it to clipboard
+
+click note with left mouse button to generate normal note.
+
+click note with right mouse button to generate
+ long note start position / end position."
+
+[node name="rewind" type="Button" parent="layer"]
+margin_left = 13.0
+margin_top = 192.0
+margin_right = 116.0
+margin_bottom = 216.0
+text = "<<"
+
+[node name="skip" type="Button" parent="layer"]
+margin_left = 126.0
+margin_top = 190.0
+margin_right = 226.0
+margin_bottom = 217.0
+text = ">>"
+
+[node name="SKIPTO" type="Label" parent="layer"]
+margin_left = 32.0
+margin_top = 154.0
+margin_right = 209.0
+margin_bottom = 185.0
+text = "SKIP TO :"
+align = 1
+valign = 1
+
+[node name="SPEED" type="Label" parent="layer"]
+margin_left = 32.0
+margin_top = 224.0
+margin_right = 209.0
+margin_bottom = 255.0
+text = "SPEED :"
+align = 1
+valign = 1
+
+[node name="speedm" type="Button" parent="layer"]
+margin_left = 15.0
+margin_top = 257.0
+margin_right = 118.0
+margin_bottom = 280.0
+text = "--"
+
+[node name="speedp" type="Button" parent="layer"]
+margin_left = 128.0
+margin_top = 256.0
+margin_right = 226.0
+margin_bottom = 280.0
+text = "++"
+
+[connection signal="file_selected" from="layer/file_dialog" to="." method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="layer/import" to="." method="_on_import_pressed"]
+[connection signal="pressed" from="layer/export" to="." method="_on_export_pressed"]
+[connection signal="pressed" from="layer/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="layer/play2" to="." method="_on_play2_pressed"]
+[connection signal="pressed" from="layer/stop" to="." method="_on_stop_pressed"]
+[connection signal="pressed" from="layer/rewind" to="." method="_on_rewind_pressed"]
+[connection signal="pressed" from="layer/skip" to="." method="_on_skip_pressed"]
+[connection signal="pressed" from="layer/speedm" to="." method="_on_speedm_pressed"]
+[connection signal="pressed" from="layer/speedp" to="." method="_on_speedp_pressed"]
